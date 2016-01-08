@@ -25,7 +25,7 @@ imagen2 = imagen;
 figure,imshow(imagen2);
 title('before bwareaopen')
 % Remove all object containing fewer than 15 pixels
-imagen = bwareaopen(imagen,25);
+imagen = bwareaopen(imagen,15);
 imagen3 = imagen;
 figure,imshow(imagen3);
 title('after bwareaopen')
