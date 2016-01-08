@@ -1,3 +1,6 @@
+function OCR(imagen)
+
+
 % OCR (Optical Character Recognition).
 % Author: Ankit Saroch 
 % e-mail: saroch.ankit@gmail.com
@@ -6,29 +9,29 @@
 % PRINCIPAL PROGRAM
 warning off %#ok<WNOFF>
 % Clear all
-clc, close all, clear all
+close all
 % Read image
-imagen=imread('testcheck2.bmp');
+%imagen=imread('testcheck2.bmp');
 % Show image
 imagen1 = imagen;
 figure,imshow(imagen1);
 title('INPUT IMAGE WITH NOISE')
 % Convert to gray scale
-if size(imagen,3)==3 %RGB image
-    imagen=rgb2gray(imagen);
-end
+%if size(imagen,3)==3 %RGB image
+%    imagen=rgb2gray(imagen);
+%end
 % Convert to BW
 threshold = graythresh(imagen);
 
 imagen =~im2bw(imagen,threshold);
 imagen2 = imagen;
 figure,imshow(imagen2);
-title('before bwareaopen')
+%title('before bwareaopen')
 % Remove all object containing fewer than 15 pixels
-imagen = bwareaopen(imagen,15);
-imagen3 = imagen;
-figure,imshow(imagen3);
-title('after bwareaopen')
+%imagen = bwareaopen(imagen,15);
+%imagen3 = imagen;
+%figure,imshow(imagen3);
+%title('after bwareaopen')
 %Storage matrix word from image 
 word=[ ];
 re=imagen;
@@ -108,3 +111,5 @@ fclose(fid);
 %Open 'text.txt' file
 winopen('text.txt')
 clear all
+
+end

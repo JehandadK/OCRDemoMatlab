@@ -1,48 +1,51 @@
 %CREATE TEMPLATES
 %Letter
-clc;
+function templates = create_templates()
+
 close all;
-A=imread('letters_numbers\A.bmp');B=imread('letters_numbers\B.bmp');
-C=imread('letters_numbers\C.bmp');D=imread('letters_numbers\D.bmp');
-E=imread('letters_numbers\E.bmp');F=imread('letters_numbers\F.bmp');
-G=imread('letters_numbers\G.bmp');H=imread('letters_numbers\H.bmp');
-I=imread('letters_numbers\I.bmp');J=imread('letters_numbers\J.bmp');
-K=imread('letters_numbers\K.bmp');L=imread('letters_numbers\L.bmp');
-M=imread('letters_numbers\M.bmp');N=imread('letters_numbers\N.bmp');
-O=imread('letters_numbers\O.bmp');P=imread('letters_numbers\P.bmp');
-Q=imread('letters_numbers\Q.bmp');R=imread('letters_numbers\R.bmp');
-S=imread('letters_numbers\S.bmp');T=imread('letters_numbers\T.bmp');
-U=imread('letters_numbers\U.bmp');V=imread('letters_numbers\V.bmp');
-W=imread('letters_numbers\W.bmp');X=imread('letters_numbers\X.bmp');
-Y=imread('letters_numbers\Y.bmp');Z=imread('letters_numbers\Z.bmp');
+
+% upper case letters
+A=imread('characters\A.bmp');B=imread('characters\B.bmp');
+C=imread('characters\C.bmp');D=imread('characters\D.bmp');
+E=imread('characters\E.bmp');F=imread('characters\F.bmp');
+G=imread('characters\G.bmp');H=imread('characters\H.bmp');
+I=imread('characters\I.bmp');J=imread('characters\J.bmp');
+K=imread('characters\K.bmp');L=imread('characters\L.bmp');
+M=imread('characters\M.bmp');N=imread('characters\N.bmp');
+O=imread('characters\O.bmp');P=imread('characters\P.bmp');
+Q=imread('characters\Q.bmp');R=imread('characters\R.bmp');
+S=imread('characters\S.bmp');T=imread('characters\T.bmp');
+U=imread('characters\U.bmp');V=imread('characters\V.bmp');
+W=imread('characters\W.bmp');X=imread('characters\X.bmp');
+Y=imread('characters\Y.bmp');Z=imread('characters\Z.bmp');
+
 %lower case letters
-a=imread('letters_numbers\a.png');b=imread('letters_numbers\b.png');
-c=imread('letters_numbers\c.png');d=imread('letters_numbers\d.png');
-e=imread('letters_numbers\e.png');f=imread('letters_numbers\f.png');
-g=imread('letters_numbers\g.png');h=imread('letters_numbers\h.png');
-i=imread('letters_numbers\i.png');j=imread('letters_numbers\j.png');
-k=imread('letters_numbers\k.png');l=imread('letters_numbers\l.png');
-m=imread('letters_numbers\m.png');n=imread('letters_numbers\n.png');
-o=imread('letters_numbers\o.png');p=imread('letters_numbers\p.png');
-q=imread('letters_numbers\q.png');r=imread('letters_numbers\r.png');
-s=imread('letters_numbers\s.png');t=imread('letters_numbers\t.png');
-u=imread('letters_numbers\u.png');v=imread('letters_numbers\v.png');
-w=imread('letters_numbers\w.png');x=imread('letters_numbers\x.png');
-y=imread('letters_numbers\y.png');z=imread('letters_numbers\z.png');
+a=imread('characters\a.png');b=imread('characters\b.png');
+c=imread('characters\c.png');d=imread('characters\d.png');
+e=imread('characters\e.png');f=imread('characters\f.png');
+g=imread('characters\g.png');h=imread('characters\h.png');
+i=imread('characters\i.png');j=imread('characters\j.png');
+k=imread('characters\k.png');l=imread('characters\l.png');
+m=imread('characters\m.png');n=imread('characters\n.png');
+o=imread('characters\o.png');p=imread('characters\p.png');
+q=imread('characters\q.png');r=imread('characters\r.png');
+s=imread('characters\s.png');t=imread('characters\t.png');
+u=imread('characters\u.png');v=imread('characters\v.png');
+w=imread('characters\w.png');x=imread('characters\x.png');
+y=imread('characters\y.png');z=imread('characters\z.png');
 
+%Numbers
+one=imread('characters\1.bmp');  two=imread('characters\2.bmp');
+three=imread('characters\3.bmp');four=imread('characters\4.bmp');
+five=imread('characters\5.bmp'); six=imread('characters\6.bmp');
+seven=imread('characters\7.bmp');eight=imread('characters\8.bmp');
+nine=imread('characters\9.bmp'); zero=imread('characters\0.bmp');
 
-%Number
-one=imread('letters_numbers\1.bmp');  two=imread('letters_numbers\2.bmp');
-three=imread('letters_numbers\3.bmp');four=imread('letters_numbers\4.bmp');
-five=imread('letters_numbers\5.bmp'); six=imread('letters_numbers\6.bmp');
-seven=imread('letters_numbers\7.bmp');eight=imread('letters_numbers\8.bmp');
-nine=imread('letters_numbers\9.bmp'); zero=imread('letters_numbers\0.bmp');
+%Special characters
+specialDollar = im2bw(imread('characters\special$.png'));
+specialHash = im2bw(imread('characters\special#.png'));
 
-%Special
-specialDollar = im2bw(imread('letters_numbers\special$.png'));
-specialHash = im2bw(imread('letters_numbers\special#.png'));
-
-%*-*-*-*-*-*-*-*-*-*-*-
+% -------------------------------------
 letter=[A B C D E F G H I J K L M...
     N O P Q R S T U V W X Y Z];
 number=[one two three four five...
@@ -51,6 +54,8 @@ lowercase = [a b c d e f g h i j k ...
      l m n o p q r s t u v w x y z];
 specials = [ specialHash specialDollar];
 character=[letter number lowercase specials];
+
+% Because image array is of 24X42 pixels
 templates=mat2cell(character,42,[24 24 24 24 24 24 24 ...
     24 24 24 24 24 24 24 ...
     24 24 24 24 24 24 24 ...
@@ -60,5 +65,8 @@ templates=mat2cell(character,42,[24 24 24 24 24 24 24 ...
     24 24 24 24 24 24 24 24 ...
     24 24 24 24 24 24 24 24 ...
     24 24 24 24]);
+
+% save the model in a file
 save ('templates','templates')
-clear all
+
+end
